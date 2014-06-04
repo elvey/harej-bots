@@ -208,6 +208,7 @@ foreach ($transclusions as $page) {
 			$description = "{{rfcquote|text=\n" . $description . "}}"; // indents the description
 			preg_match("/([0-2]\d):([0-5]\d),\s(\d{1,2})\s(\w*)\s(\d{4})\s\(UTC\)/i", $description, $t);
 			$timestamp = strtotime($t[0]);
+	                $description = preg_replace("'''\n\n.*", "", $description); // truncate at start of section header
 		} else {
 			$description = $prettytimestamp;
 		}
